@@ -13,13 +13,15 @@ def main():
     animals_data_string = ''
     for animal in animals_data:
         animals_data_string += '<li class="cards__item">\n'
-        animals_data_string += f'Name: {animal["name"]}<br/>\n'
-        animals_data_string += f'Diet: {animal["characteristics"]["diet"]}<br/>\n'
-        animals_data_string += f'Location: {animal["locations"][0]}<br/>\n'
+        animals_data_string += f'<div class="card__title">{animal["name"]}</div>\n'
+        animals_data_string += '<p class="card__text">\n'
+        animals_data_string += f'<strong>Diet:</strong> {animal["characteristics"]["diet"]}<br/>\n'
+        animals_data_string += f'<strong>Location:</strong> {animal["locations"][0]}<br/>\n'
 
         animal_type = animal["characteristics"].get("type")
         if animal_type:
-            animals_data_string += f'Type: {animal_type}<br/>\n'
+            animals_data_string += f'<strong>Type:</strong> {animal_type}<br/>\n'
+        animals_data_string += '</p>\n'
         animals_data_string += '</li>\n'
 
     with open('animals_template.html', 'r') as handle:
